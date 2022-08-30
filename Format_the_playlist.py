@@ -48,17 +48,21 @@ Then your function would return the following:
 
 
 def format_playlist(songs: list) -> str:
+    # сортировка плейлиста по артисту потом по песни
     songs.sort(key= lambda keys: [keys[2], keys[0]])
-    l_s = 4
-    l_t = 4
-    l_a = 6
+    l_s = 4 #коэфицент длины
+    l_t = 4 #коэфицент времени
+    l_a = 6 #коэфицент артиста
+
+    # формирование плейлиста
     ff = ''
     for song in songs:
-        if len(song[0]) > l_s: l_s = len(song[0])
-
         ff += f'| {song[0]:{l_s}} | {song[1]:{l_t}} | {song[2]:{l_a}} |\n'
+
+
+    # формирование шапки и закрывающей сроки
     sss = f'+-{"-" * l_s}-+-{"-" * l_t}-+-{"-" * l_a}-+'
-    ss = f'{sss}\n| Name                       | Time | Artist          |\n+----------------------------+------+-----------------+\n'
+    ss = f'{sss}\n| {"Name":{l_s}} | {"Time":{l_t}} | {"Artist":{l_a}} |\n{sss}\n'
     s_end = sss
 
     return ss + ff + s_end
