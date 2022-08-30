@@ -57,8 +57,9 @@ def format_playlist(songs: list) -> str:
         if len(song[0]) > l_s: l_s = len(song[0])
 
         ff += f'| {song[0]:{l_s}} | {song[1]:{l_t}} | {song[2]:{l_a}} |\n'
-    ss = f'+{"-" * l_s}-+{"-" * {l_t}}-+{"-":{l_a}}-+\n| Name                       | Time | Artist          |\n+----------------------------+------+-----------------+\n'
-    s_end = '+----------------------------+------+-----------------+'
+    sss = f'+-{"-" * l_s}-+-{"-" * l_t}-+-{"-" * l_a}-+'
+    ss = f'{sss}\n| Name                       | Time | Artist          |\n+----------------------------+------+-----------------+\n'
+    s_end = sss
 
     return ss + ff + s_end
 
