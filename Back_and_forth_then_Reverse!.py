@@ -51,18 +51,14 @@ def arrange(s: list) -> list:
     # Code and make sure not to mutate s!!
     ss = s.copy()
     t = []
-    temp = []
     for i in range(len(ss)):
         if len(ss) > 1:
             if i % 2 == 0:
                 t.append(ss.pop(0))
                 t.append(ss.pop())
             else:
-                temp.append(ss.pop(0))
-                temp.append(ss.pop())
-                temp.reverse()
-                t += temp
-                temp = []
+                t.append(ss.pop())
+                t.append(ss.pop(0))
         elif ss != []:
             t.append(ss.pop())
 
