@@ -47,12 +47,30 @@ Do not mutate the Input.
 #     return t
 #
 #
-# print(arrange([5, 6, 7, 8, 9]))
+def arrange(s: list) -> list:
+    # Code and make sure not to mutate s!!
+    ss = s.copy()
+    t = []
+    temp = []
+    for i in range(len(ss)):
+        if len(ss) > 1:
+            if i % 2 == 0:
+                t.append(ss.pop(0))
+                t.append(ss.pop())
+            else:
+                temp.append(ss.pop(0))
+                temp.append(ss.pop())
+                temp.reverse()
+                t += temp
+                temp = []
+        elif ss != []:
+            t.append(ss.pop())
+
+    return t
+
+
+print(arrange([5, 6, 7, 8, 9]))
 
 
 
 
-s = [0]
-
-print(s.pop())
-print(s)
