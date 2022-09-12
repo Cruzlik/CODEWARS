@@ -31,7 +31,6 @@ Do not mutate the Input.
 
 '''
 
-
 # def arrange(s: list) -> list:
 #     # Code and make sure not to mutate s!!
 #     ss = s.copy()
@@ -47,26 +46,51 @@ Do not mutate the Input.
 #     return t
 #
 #
+# def arrange(s: list) -> list:
+#     # Code and make sure not to mutate s!!
+#     ss = s.copy()
+#     t = []
+#     # for i in range(len(ss)):
+#     i = 0
+#     while ss != []:
+#         if len(ss) > 1:
+#             if i % 2 == 0:
+#                 t.append(ss.pop(0))
+#                 t.append(ss.pop())
+#             else:
+#                 t.append(ss.pop())
+#                 t.append(ss.pop(0))
+#         elif ss != []:
+#             t.append(ss.pop())
+#         i += 1
+#
+#     return t
+'''
+
+правильное решение сделал
+
+'''
+
+
 def arrange(s: list) -> list:
-    # Code and make sure not to mutate s!!
-    ss = s.copy()
     t = []
-    for i in range(len(ss)):
-        if len(ss) > 1:
-            if i % 2 == 0:
-                t.append(ss.pop(0))
-                t.append(ss.pop())
-            else:
-                t.append(ss.pop())
-                t.append(ss.pop(0))
-        elif ss != []:
-            t.append(ss.pop())
+    for i in range(len(s) // 2):
+        if i % 2 == 0:
+            t.append(s[i])
+            t.append(s[len(s) - i - 1])
+        else:
+            t.append(s[len(s) - i - 1])
+            t.append(s[i])
+
+    if len(s) % 2 != 0:
+        t.append(s[len(s) // 2])
 
     return t
 
 
 print(arrange([5, 6, 7, 8, 9]))
 
-
-
-
+'''
+BEST PRACTICES
+'''
+arrange = lambda s: [s[[i, -i, ~i, i][i % 4] // 2] for i in range(len(s))]
