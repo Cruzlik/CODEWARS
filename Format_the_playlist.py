@@ -50,14 +50,15 @@ Then your function would return the following:
 def format_playlist(songs: list) -> str:
     # сортировка плейлиста по артисту потом по песни
     songs.sort(key=lambda keys: [keys[2], keys[0]])
-    l_s = len(max(songs, key=lambda keys: len(keys[0]))[0])  # коэфицент длины
-    l_t = len(max(songs, key=lambda keys: len(keys[1]))[1])  # коэфицент времени
-    l_a = len(max(songs, key=lambda keys: len(keys[2]))[2])  # коэфицент артиста
-
-    # формирование плейлиста
     ff = ''
-    for song in songs:
-        ff += f'| {song[0]:{l_s}} | {song[1]:{l_t}} | {song[2]:{l_a}} |\n'
+    if len(songs) != 0 :
+        l_s = len(max(songs, key=lambda keys: len(keys[0]))[0])  # коэфицент длины
+        l_t = len(max(songs, key=lambda keys: len(keys[1]))[1])  # коэфицент времени
+        l_a = len(max(songs, key=lambda keys: len(keys[2]))[2])  # коэфицент артиста
+
+        # формирование плейлиста
+        for song in songs:
+            ff += f'| {song[0]:{l_s}} | {song[1]:{l_t}} | {song[2]:{l_a}} |\n'
 
     # формирование шапки и закрывающей сроки
     sss = f'+-{"-" * l_s}-+-{"-" * l_t}-+-{"-" * l_a}-+'
@@ -86,4 +87,7 @@ songs2 = [
     ('Stick Talk', '2:54', 'Future'),
     ('Nightcrawler', '5:22', 'Travis Scott')
 ]
+songs3 = []
 print(format_playlist(songs))
+print(format_playlist(songs2))
+print(format_playlist(songs3))
